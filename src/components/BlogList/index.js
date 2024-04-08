@@ -2,14 +2,14 @@ import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 
-import BlogItem from '../Blogitem'
+import BlogItem from '../BlogItem'
 
 import './index.css'
 
 class BlogList extends Component {
   state = {isLoading: true, blogsData: []}
 
-  componentDidmount() {
+  componentDidMount() {
     this.getBlogsData()
   }
 
@@ -24,7 +24,6 @@ class BlogList extends Component {
       author: eachItem.author,
       topic: eachItem.topic,
     }))
-
     this.setState({blogsData: formattedData, isLoading: false})
   }
 
@@ -34,13 +33,13 @@ class BlogList extends Component {
     return (
       <div className="blogs-list-container">
         {isLoading ? (
-          <div testid="loader">
+          <div data-testid="loader">
             <Loader type="TailSpin" color="#00bfff" height={50} width={50} />
           </div>
         ) : (
           <ul className="blogs-list">
             {blogsData.map(eachBlogItem => (
-              <BlogItem key={eachBlogItem.id} blogItamDetails={eachBlogItem} />
+              <BlogItem key={eachBlogItem.id} blogItemDetails={eachBlogItem} />
             ))}
           </ul>
         )}
